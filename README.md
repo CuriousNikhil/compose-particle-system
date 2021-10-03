@@ -1,6 +1,6 @@
 # compose-particle-system
-A lightweight particle system for Jetpack Compose.
 
+Quarks is a lightweight particle system for Jetpack Compose. There are endless possibilities for creating generative art with this particle system. Here are few examples - 
 
 | Fountain | Meteor | Confetti | Explosion | Snowfall |
 |---|---|---|---|---|
