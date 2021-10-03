@@ -90,7 +90,6 @@ If you want an indefinite stream/flow of particles you can set `maxParticlesCoun
 ⚠️  _`durationMillis = 10000` config does not work for indefinite emission. It'll run continuously, so make sure you only use it whenever needed. The stopping mechanism is yet to be added in the code._
 
 
-
 ### Duration ⏰
 
 Set the duration value `durationMillis = 10000` for how long do you want to run the animation. Your animation of particle will run for the given number of milliseconds. Duration won't work for indefinte emission of particles.
@@ -100,20 +99,34 @@ _Default value_ = 10000
 
 ### Velocity 🚤
 
-You can define the particle velocity in both directions. Set `velocity = Velocity(xDirection = 1f, yDirection = 1f)`. 
+You can define the particle velocity in both directions. Set `velocity = Velocity(xDirection = 1f, yDirection = 1f, angle = TWO_PI, randomize = true)`. 
 
-_Default value_ = `Velocity(xDirection = 1f, yDirection = 1f)`
+1. Angle - 
+
+   By default, the `angle` is used to compute the sin and cos components of velocity over x and y direction. And the supplied values of `xDirection` and `yDirection` acts as magnitude. Default valye of `angle` is TWO_PI (in radians). You can set `angle` value in [radians](https://en.wikipedia.org/wiki/Radian). 
+
+
+
+2. Randomizing velocities -
+   
+   By default, random velocities are applied to each particles but you can configure to keep it single value. Change the `randomize=false` flag to false.
+
+_Default value_ = `Velocity(xDirection = 1f, yDirection = 1f, angle = TWO_PI, randomize = true)`
+
+
 
 ### Force 🏋️
 
 Force can be applied on each particle. Two types of force options are available. 
+
 1. Force.Gravity - 
 
-You can apply gravitational force on particle by setting `force = Force.Gravity(magnitude = 2f)`. This way particle will experience a downward force
+   You can apply gravitational force on particle by setting `force = Force.Gravity(magnitude = 2f)`. This way particle will experience a downward force
 If you pass the negative value in the magnitude then it'll become an anti-gravity and particle will experience an upward force.
 
 2. Force.Wind - 🎐
-You can apply Wind force on each particle in both directions. `force = Force.Wind(1.5f, 0.3f)`. Wind will move particle in the specified direction.
+
+   You can apply Wind force on each particle in both directions. `force = Force.Wind(1.5f, 0.3f)`. Wind will move particle in the specified direction.
 
 _Default value_ = `Force.Gravity(0.0f)`
 
@@ -129,11 +142,11 @@ You can configure particle size in two ways.
 
 1. Setting random size of particles
 
-`particleSize = ParticleSize.RandomSizes(25..100)` Set range of sizes and a random size will be applied to each particle.
+   `particleSize = ParticleSize.RandomSizes(25..100)` Set range of sizes and a random size will be applied to each particle.
 
 2. Setting fixed size
 
-`particleSize = ParticleSize.ConstantSize(25f)` sets the constant size to each particle.
+   `particleSize = ParticleSize.ConstantSize(25f)` sets the constant size to each particle.
 
 _Default value_ = `ParticleSize.ConstantSize(25f)`
 
@@ -142,12 +155,12 @@ _Default value_ = `ParticleSize.ConstantSize(25f)`
 
 You can configure random colors or single color to a particle.
 1. Random colors - 
-
-`particleColor = ParticleColor.RandomColors(listOf(Color.White, Color.Yellow, Color.Red, Color.Blue))` pass the list of colors and a random value will be selected and applied to different particles.
+   
+   `particleColor = ParticleColor.RandomColors(listOf(Color.White, Color.Yellow, Color.Red, Color.Blue))` pass the list of colors and a random value will be selected and applied to different particles.
 
 2. Single color -
 
-`particleColor = ParticleColor.SingleColor(Color.Yellow)` sets the single color to each particle.
+   `particleColor = ParticleColor.SingleColor(Color.Yellow)` sets the single color to each particle.
 
 _Default value_ = `ParticleColor.SingleColor(Color.Yellow)`
 
@@ -161,3 +174,13 @@ Set the lifetime of a particle to a value and an aging factor by which the life 
 Here at each frame the `againgFactor` will be removed from the `maxlife` value of particle.
 
 _Default value_ = `LifeTime(maxLife = 255f, agingFactor = 1f)`
+
+## TODOs
+[] Add angular velocity
+[] Add stopping mechanism for infinite flow
+[] Add a custom `onDraw()` config to let user draw anything as a particle shape.
+
+
+## License 
+Licensed under Apache License, Version 2.0 [here](https://github.com/CuriousNikhil/compose-particle-system/blob/main/README.md)
+
