@@ -176,9 +176,9 @@ Here at each frame the `againgFactor` will be removed from the `maxlife` value o
 _Default value_ = `LifeTime(maxLife = 255f, agingFactor = 1f)`
 
 ## TODOs
-[] Add angular velocity
-[] Add stopping mechanism for infinite flow
-[] Add a custom `onDraw()` config to let user draw anything as a particle shape.
+- [ ] Add angular velocity
+- [ ] Add stopping mechanism for infinite flow
+- [ ] Add a custom `onDraw()` config to let user draw anything as a particle shape.
 
 
 ## License 
