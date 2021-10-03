@@ -2,7 +2,9 @@
 A lightweight particle system for Jetpack Compose.
 
 
-TODO= GIFs here
+| Fountain | Meteor | Confetti | Explosion | Snowfall |
+|---|---|---|---|---|
+| ![fountain](https://user-images.githubusercontent.com/16976114/135747145-9abf8e1e-8829-4442-98be-ea63189c9422.gif) | ![meteor](https://user-images.githubusercontent.com/16976114/135746889-846c3c9c-896c-40b4-ba9e-72da5bbdd19c.gif) | ![confetti](https://user-images.githubusercontent.com/16976114/135746899-1a5a24c4-f968-4ab2-ab05-fc3de6e1cde7.gif) | ![explosion](https://user-images.githubusercontent.com/16976114/135746912-099591ac-9b37-42ed-aee5-e43ab0a4c69a.gif) | ![snowfall](https://user-images.githubusercontent.com/16976114/135746941-998bea7b-f9ed-455b-92e0-1c4de21ad2ee.gif)
 
 
 ## Getting started
