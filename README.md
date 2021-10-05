@@ -73,8 +73,6 @@ Set emission type to set particle emission as flow/stream of steady particles or
 
 If you want to explode/burst particles at once, you can set emission type to `emissionType = EmissionType.ExplodeEmission(numberOfParticles = 100)`. Pass the number of particles that you want at the time of explosion. 
 
-// TODO - add gif
-
 #### EmissionType.FlowEmission 💧
 
 **Definite Emission**
