@@ -12,7 +12,7 @@ Quarks is a lightweight particle system for Jetpack Compose. There are endless p
 1. Add the following dependencies in your `build.gradle` file
 
 ```groovy
-implementation "me.nikhilchaudhari:quarks:1.0.0-alpha01"
+implementation "me.nikhilchaudhari:quarks:{latest-release-version}"
 ```
 
 2. Call `CreateParticles(...)` composable function
