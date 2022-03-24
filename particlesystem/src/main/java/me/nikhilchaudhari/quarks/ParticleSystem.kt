@@ -11,14 +11,8 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import me.nikhilchaudhari.quarks.emitters.ParticleExplodeEmitter
 import me.nikhilchaudhari.quarks.emitters.ParticleFlowEmitter
-import me.nikhilchaudhari.quarks.particle.Acceleration
-import me.nikhilchaudhari.quarks.particle.EmissionType
-import me.nikhilchaudhari.quarks.particle.Force
-import me.nikhilchaudhari.quarks.particle.LifeTime
-import me.nikhilchaudhari.quarks.particle.ParticleColor
+import me.nikhilchaudhari.quarks.particle.*
 import me.nikhilchaudhari.quarks.particle.ParticleConfigData
-import me.nikhilchaudhari.quarks.particle.ParticleSize
-import me.nikhilchaudhari.quarks.particle.Velocity
 import me.nikhilchaudhari.quarks.particle.createForceVector
 
 @Composable
@@ -34,6 +28,7 @@ fun CreateParticles(
     lifeTime: LifeTime = LifeTime(255f, 1f),
     emissionType: EmissionType = EmissionType.ExplodeEmission(),
     durationMillis: Int = 10000,
+    imagesList: ParticleImage? = ParticleImage.Images(emptyList())
 ) {
 
     val dt = remember { mutableStateOf(0f) }
@@ -43,7 +38,16 @@ fun CreateParticles(
 
     val emitter = remember {
         val particleConfigData = ParticleConfigData(
-            x, y, velocity, force, acceleration, particleSize, particleColor, lifeTime, emissionType
+            x,
+            y,
+            velocity,
+            force,
+            acceleration,
+            particleSize,
+            particleColor,
+            lifeTime,
+            emissionType,
+            imagesList
         )
         when (emissionType) {
             is EmissionType.ExplodeEmission -> {

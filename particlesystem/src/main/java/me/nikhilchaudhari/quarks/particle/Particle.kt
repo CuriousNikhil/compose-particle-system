@@ -3,7 +3,10 @@ package me.nikhilchaudhari.quarks.particle
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import me.nikhilchaudhari.quarks.core.Vector2D
 import me.nikhilchaudhari.quarks.core.add
 import me.nikhilchaudhari.quarks.core.roundTo
@@ -16,7 +19,8 @@ internal class Particle constructor(
     var velocity: Vector2D = Vector2D(0f, 0f),
     var acceleration: Vector2D = Vector2D(0f, 0f),
     var lifetime: Float = 255f,
-    var agingFactor: Float = 20f
+    var agingFactor: Float = 20f,
+    var imageBitmap: ImageBitmap?
 ) : Vector2D(initialX, initialY) {
 
     private val originalLife = lifetime
@@ -46,14 +50,22 @@ internal class Particle constructor(
     }
 
     fun show(drawScope: DrawScope) {
-        drawScope.drawArc(
-            color = color,
-            startAngle = 0f,
-            sweepAngle = 360f,
-            alpha = alpha,
-            topLeft = Offset(x, y),
-            size = Size(size, size),
-            useCenter = true
-        )
+        if (imageBitmap != null) {
+            drawScope.drawImage(
+                image = imageBitmap!!,
+                topLeft = Offset(x, y),
+                alpha = alpha
+            )
+        } else {
+            drawScope.drawArc(
+                color = color,
+                startAngle = 0f,
+                sweepAngle = 360f,
+                alpha = alpha,
+                topLeft = Offset(x, y),
+                size = Size(size, size),
+                useCenter = true
+            )
+        }
     }
 }
