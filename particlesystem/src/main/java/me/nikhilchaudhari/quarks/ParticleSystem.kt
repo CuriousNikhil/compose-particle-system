@@ -23,14 +23,13 @@ fun CreateParticles(
     velocity: Velocity = Velocity(xDirection = 1f, yDirection = 1f),
     force: Force = Force.Gravity(0.0f),
     acceleration: Acceleration = Acceleration(0f, 0f),
+    particleImage: ParticleImage? = ParticleImage.Images(emptyList()),
     particleSize: ParticleSize = ParticleSize.ConstantSize(),
     particleColor: ParticleColor = ParticleColor.SingleColor(),
     lifeTime: LifeTime = LifeTime(255f, 1f),
     emissionType: EmissionType = EmissionType.ExplodeEmission(),
-    durationMillis: Int = 10000,
-    imagesList: ParticleImage? = ParticleImage.Images(emptyList())
+    durationMillis: Int = 10000
 ) {
-
     val dt = remember { mutableStateOf(0f) }
 
     var startTime by remember { mutableStateOf(0L) }
@@ -43,11 +42,11 @@ fun CreateParticles(
             velocity,
             force,
             acceleration,
+            particleImage,
             particleSize,
             particleColor,
             lifeTime,
-            emissionType,
-            imagesList
+            emissionType
         )
         when (emissionType) {
             is EmissionType.ExplodeEmission -> {

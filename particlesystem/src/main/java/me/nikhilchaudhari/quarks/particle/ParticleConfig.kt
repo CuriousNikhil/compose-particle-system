@@ -76,13 +76,13 @@ internal fun ParticleColor.getExactColor(): Color {
 }
 
 sealed class ParticleImage {
-    data class Images(val imageBitmapList: List<ImageBitmap>) : ParticleImage()
+    data class Images(val images: List<ImageBitmap>) : ParticleImage()
 }
 
 internal fun ParticleImage.getRandomImage(): ImageBitmap {
     return when (this) {
         is ParticleImage.Images ->
-            this.imageBitmapList[Random.nextInt(0, this.imageBitmapList.size)]
+            this.images[Random.nextInt(0, this.images.size)]
     }
 }
 
@@ -110,10 +110,10 @@ internal data class ParticleConfigData(
     val velocity: Velocity,
     val force: Force,
     val acceleration: Acceleration,
+    val particleImage: ParticleImage?,
     val particleSize: ParticleSize,
     val particleColor: ParticleColor,
     val lifeTime: LifeTime,
-    val emissionType: EmissionType,
-    val image: ParticleImage?
+    val emissionType: EmissionType
 )
 

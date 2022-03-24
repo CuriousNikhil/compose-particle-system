@@ -32,7 +32,7 @@ internal abstract class Emitter(
             acceleration = particleConfigData.acceleration.createAccelerationVector(),
             lifetime = particleConfigData.lifeTime.maxLife,
             agingFactor = particleConfigData.lifeTime.agingFactor,
-            imageBitmap = particleConfigData.image?.getRandomImage()
+            image = particleConfigData.particleImage?.getRandomImage()
         )
     }
 

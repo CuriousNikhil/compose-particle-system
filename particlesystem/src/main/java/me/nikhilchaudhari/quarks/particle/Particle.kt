@@ -11,6 +11,7 @@ import me.nikhilchaudhari.quarks.core.Vector2D
 import me.nikhilchaudhari.quarks.core.add
 import me.nikhilchaudhari.quarks.core.roundTo
 import me.nikhilchaudhari.quarks.core.scalarMultiply
+import kotlin.math.roundToInt
 
 internal class Particle constructor(
     var initialX: Float = 0f, var initialY: Float = 0f,
@@ -20,7 +21,7 @@ internal class Particle constructor(
     var acceleration: Vector2D = Vector2D(0f, 0f),
     var lifetime: Float = 255f,
     var agingFactor: Float = 20f,
-    var imageBitmap: ImageBitmap?
+    var image: ImageBitmap?
 ) : Vector2D(initialX, initialY) {
 
     private val originalLife = lifetime
@@ -50,11 +51,12 @@ internal class Particle constructor(
     }
 
     fun show(drawScope: DrawScope) {
-        if (imageBitmap != null) {
+        if (image != null) {
             drawScope.drawImage(
-                image = imageBitmap!!,
-                topLeft = Offset(x, y),
-                alpha = alpha
+                image = image!!,
+                dstOffset = IntOffset(x.roundToInt(), y.roundToInt()),
+                alpha = alpha,
+                dstSize = IntSize(size.roundToInt(), size.roundToInt())
             )
         } else {
             drawScope.drawArc(
