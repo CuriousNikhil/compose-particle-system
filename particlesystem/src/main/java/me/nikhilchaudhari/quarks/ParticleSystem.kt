@@ -11,14 +11,8 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import me.nikhilchaudhari.quarks.emitters.ParticleExplodeEmitter
 import me.nikhilchaudhari.quarks.emitters.ParticleFlowEmitter
-import me.nikhilchaudhari.quarks.particle.Acceleration
-import me.nikhilchaudhari.quarks.particle.EmissionType
-import me.nikhilchaudhari.quarks.particle.Force
-import me.nikhilchaudhari.quarks.particle.LifeTime
-import me.nikhilchaudhari.quarks.particle.ParticleColor
+import me.nikhilchaudhari.quarks.particle.*
 import me.nikhilchaudhari.quarks.particle.ParticleConfigData
-import me.nikhilchaudhari.quarks.particle.ParticleSize
-import me.nikhilchaudhari.quarks.particle.Velocity
 import me.nikhilchaudhari.quarks.particle.createForceVector
 
 @Composable
@@ -29,13 +23,13 @@ fun CreateParticles(
     velocity: Velocity = Velocity(xDirection = 1f, yDirection = 1f),
     force: Force = Force.Gravity(0.0f),
     acceleration: Acceleration = Acceleration(0f, 0f),
+    particleImage: ParticleImage = ParticleImage.Images(emptyList()),
     particleSize: ParticleSize = ParticleSize.ConstantSize(),
     particleColor: ParticleColor = ParticleColor.SingleColor(),
     lifeTime: LifeTime = LifeTime(255f, 1f),
     emissionType: EmissionType = EmissionType.ExplodeEmission(),
-    durationMillis: Int = 10000,
+    durationMillis: Int = 10000
 ) {
-
     val dt = remember { mutableStateOf(0f) }
 
     var startTime by remember { mutableStateOf(0L) }
@@ -43,7 +37,16 @@ fun CreateParticles(
 
     val emitter = remember {
         val particleConfigData = ParticleConfigData(
-            x, y, velocity, force, acceleration, particleSize, particleColor, lifeTime, emissionType
+            x,
+            y,
+            velocity,
+            force,
+            acceleration,
+            particleImage,
+            particleSize,
+            particleColor,
+            lifeTime,
+            emissionType
         )
         when (emissionType) {
             is EmissionType.ExplodeEmission -> {
