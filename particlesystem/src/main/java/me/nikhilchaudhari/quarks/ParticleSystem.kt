@@ -23,7 +23,7 @@ fun CreateParticles(
     velocity: Velocity = Velocity(xDirection = 1f, yDirection = 1f),
     force: Force = Force.Gravity(0.0f),
     acceleration: Acceleration = Acceleration(0f, 0f),
-    particleImage: ParticleImage? = ParticleImage.Images(emptyList()),
+    particleImage: ParticleImage = ParticleImage.Images(emptyList()),
     particleSize: ParticleSize = ParticleSize.ConstantSize(),
     particleColor: ParticleColor = ParticleColor.SingleColor(),
     lifeTime: LifeTime = LifeTime(255f, 1f),

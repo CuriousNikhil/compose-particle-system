@@ -79,10 +79,15 @@ sealed class ParticleImage {
     data class Images(val images: List<ImageBitmap>) : ParticleImage()
 }
 
-internal fun ParticleImage.getRandomImage(): ImageBitmap {
+internal fun ParticleImage.getRandomImage(): ImageBitmap? {
     return when (this) {
-        is ParticleImage.Images ->
-            this.images[Random.nextInt(0, this.images.size)]
+        is ParticleImage.Images -> {
+            if (images.isNotEmpty()) {
+                this.images[Random.nextInt(0, this.images.size)]
+            } else {
+                null
+            }
+        }
     }
 }
 
@@ -110,7 +115,7 @@ internal data class ParticleConfigData(
     val velocity: Velocity,
     val force: Force,
     val acceleration: Acceleration,
-    val particleImage: ParticleImage?,
+    val particleImage: ParticleImage,
     val particleSize: ParticleSize,
     val particleColor: ParticleColor,
     val lifeTime: LifeTime,
