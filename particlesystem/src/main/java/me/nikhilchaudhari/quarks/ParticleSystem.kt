@@ -1,19 +1,11 @@
 package me.nikhilchaudhari.quarks
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.withFrameNanos
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import me.nikhilchaudhari.quarks.emitters.ParticleExplodeEmitter
 import me.nikhilchaudhari.quarks.emitters.ParticleFlowEmitter
 import me.nikhilchaudhari.quarks.particle.*
-import me.nikhilchaudhari.quarks.particle.ParticleConfigData
-import me.nikhilchaudhari.quarks.particle.createForceVector
 
 @Composable
 fun CreateParticles(
@@ -28,7 +20,8 @@ fun CreateParticles(
     particleColor: ParticleColor = ParticleColor.SingleColor(),
     lifeTime: LifeTime = LifeTime(255f, 1f),
     emissionType: EmissionType = EmissionType.ExplodeEmission(),
-    durationMillis: Int = 10000
+    durationMillis: Int = 10000,
+    onParticlesStopped: (() -> Unit)? = null
 ) {
     val dt = remember { mutableStateOf(0f) }
 
@@ -71,10 +64,18 @@ fun CreateParticles(
         } else {
             System.currentTimeMillis() - startTime < durationMillis
         }
+
+        var particlesStoppedInvoked = false
         while (condition) {
             withFrameNanos {
                 dt.value = ((it - previousTime) / 1E7).toFloat()
                 previousTime = it
+
+                val isTimeElapsed = (System.currentTimeMillis() - startTime) > durationMillis
+                if (!particlesStoppedInvoked && isTimeElapsed) {
+                    onParticlesStopped?.invoke()
+                    particlesStoppedInvoked = true
+                }
             }
         }
     }
