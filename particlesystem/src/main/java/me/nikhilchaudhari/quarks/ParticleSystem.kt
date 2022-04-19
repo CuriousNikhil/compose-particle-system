@@ -23,9 +23,8 @@ fun CreateParticles(
     durationMillis: Int = 10000,
     onParticlesStopped: (() -> Unit)? = null
 ) {
-    val dt = remember { mutableStateOf(0f) }
-
     var startTime by remember { mutableStateOf(0L) }
+    var currentTime by remember { mutableStateOf(System.nanoTime()) }
     var previousTime by remember { mutableStateOf(System.nanoTime()) }
 
     val emitter = remember {
@@ -68,8 +67,8 @@ fun CreateParticles(
         var particlesStoppedInvoked = false
         while (condition) {
             withFrameNanos {
-                dt.value = ((it - previousTime) / 1E7).toFloat()
-                previousTime = it
+                previousTime = currentTime
+                currentTime = it
 
                 val isTimeElapsed = (System.currentTimeMillis() - startTime) > durationMillis
                 if (!particlesStoppedInvoked && isTimeElapsed) {
@@ -83,6 +82,6 @@ fun CreateParticles(
     Canvas(modifier) {
         emitter.render(this)
         emitter.applyForce(force.createForceVector())
-        emitter.update(dt.value)
+        emitter.update(((currentTime - previousTime) / 1E7).toFloat())
     }
 }
