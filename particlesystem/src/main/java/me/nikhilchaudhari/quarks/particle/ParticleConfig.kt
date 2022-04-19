@@ -1,6 +1,7 @@
 package me.nikhilchaudhari.quarks.particle
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import me.nikhilchaudhari.quarks.core.TWO_PI
 import me.nikhilchaudhari.quarks.core.Vector2D
 import kotlin.math.cos
@@ -74,6 +75,21 @@ internal fun ParticleColor.getExactColor(): Color {
     }
 }
 
+sealed class ParticleImage {
+    data class Images(val images: List<ImageBitmap>) : ParticleImage()
+}
+
+internal fun ParticleImage.getRandomImage(): ImageBitmap? {
+    return when (this) {
+        is ParticleImage.Images -> {
+            if (images.isNotEmpty()) {
+                this.images[Random.nextInt(0, this.images.size)]
+            } else {
+                null
+            }
+        }
+    }
+}
 
 data class LifeTime(val maxLife: Float = 255f, val agingFactor: Float = 15f)
 
@@ -94,14 +110,15 @@ sealed class EmissionType {
 }
 
 internal data class ParticleConfigData(
-   val x: Float = 0f,
-   val y: Float = 0f,
-   val velocity: Velocity,
-   val force: Force,
-   val acceleration: Acceleration,
-   val particleSize: ParticleSize,
-   val particleColor: ParticleColor,
-   val lifeTime: LifeTime,
-   val emissionType: EmissionType,
+    val x: Float = 0f,
+    val y: Float = 0f,
+    val velocity: Velocity,
+    val force: Force,
+    val acceleration: Acceleration,
+    val particleImage: ParticleImage,
+    val particleSize: ParticleSize,
+    val particleColor: ParticleColor,
+    val lifeTime: LifeTime,
+    val emissionType: EmissionType
 )
 

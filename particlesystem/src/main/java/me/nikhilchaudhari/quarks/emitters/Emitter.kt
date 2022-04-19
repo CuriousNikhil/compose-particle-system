@@ -2,6 +2,7 @@ package me.nikhilchaudhari.quarks.emitters
 
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import me.nikhilchaudhari.quarks.core.Vector2D
+import me.nikhilchaudhari.quarks.particle.*
 import me.nikhilchaudhari.quarks.particle.Particle
 import me.nikhilchaudhari.quarks.particle.ParticleConfigData
 import me.nikhilchaudhari.quarks.particle.createAccelerationVector
@@ -12,7 +13,6 @@ import me.nikhilchaudhari.quarks.particle.getExactSize
 internal abstract class Emitter(
     private val particleConfigData: ParticleConfigData
 ) {
-
     val particlePool = mutableListOf<Particle>()
 
     abstract fun generateParticles(numberOfParticles: Int)
@@ -32,6 +32,7 @@ internal abstract class Emitter(
             acceleration = particleConfigData.acceleration.createAccelerationVector(),
             lifetime = particleConfigData.lifeTime.maxLife,
             agingFactor = particleConfigData.lifeTime.agingFactor,
+            image = particleConfigData.particleImage.getRandomImage()
         )
     }
 
