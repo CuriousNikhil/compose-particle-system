@@ -3,6 +3,7 @@ package me.nikhilchaudhari.quarks.particle
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import me.nikhilchaudhari.quarks.core.Vector2D
 import me.nikhilchaudhari.quarks.core.add
@@ -12,6 +13,7 @@ import me.nikhilchaudhari.quarks.core.scalarMultiply
 internal class Particle constructor(
     var initialX: Float = 0f, var initialY: Float = 0f,
     val color: Color = Color.Yellow,
+    val image: ImageBitmap?,
     var size: Float = 25f,
     var velocity: Vector2D = Vector2D(0f, 0f),
     var acceleration: Vector2D = Vector2D(0f, 0f),
@@ -46,14 +48,22 @@ internal class Particle constructor(
     }
 
     fun show(drawScope: DrawScope) {
-        drawScope.drawArc(
-            color = color,
-            startAngle = 0f,
-            sweepAngle = 360f,
-            alpha = alpha,
-            topLeft = Offset(x, y),
-            size = Size(size, size),
-            useCenter = true
-        )
+        if(image != null){
+            drawScope.drawImage(
+                image = image,
+                alpha = alpha,
+                topLeft = Offset(x, y)
+            )
+        }else{
+            drawScope.drawArc(
+                color = color,
+                startAngle = 0f,
+                sweepAngle = 360f,
+                alpha = alpha,
+                topLeft = Offset(x, y),
+                size = Size(size, size),
+                useCenter = true
+            )
+        }
     }
 }

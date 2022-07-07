@@ -1,6 +1,7 @@
 package me.nikhilchaudhari.quarks.particle
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import me.nikhilchaudhari.quarks.core.TWO_PI
 import me.nikhilchaudhari.quarks.core.Vector2D
 import kotlin.math.cos
@@ -101,6 +102,7 @@ internal data class ParticleConfigData(
    val acceleration: Acceleration,
    val particleSize: ParticleSize,
    val particleColor: ParticleColor,
+   val particleImageBitmap: ImageBitmap?,
    val lifeTime: LifeTime,
    val emissionType: EmissionType,
 )

@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import me.nikhilchaudhari.quarks.emitters.ParticleExplodeEmitter
 import me.nikhilchaudhari.quarks.emitters.ParticleFlowEmitter
 import me.nikhilchaudhari.quarks.particle.Acceleration
@@ -34,6 +35,7 @@ fun CreateParticles(
     lifeTime: LifeTime = LifeTime(255f, 1f),
     emissionType: EmissionType = EmissionType.ExplodeEmission(),
     durationMillis: Int = 10000,
+    particleImageBitmap: ImageBitmap?
 ) {
 
     val dt = remember { mutableStateOf(0f) }
@@ -43,7 +45,7 @@ fun CreateParticles(
 
     val emitter = remember {
         val particleConfigData = ParticleConfigData(
-            x, y, velocity, force, acceleration, particleSize, particleColor, lifeTime, emissionType
+            x, y, velocity, force, acceleration, particleSize, particleColor, particleImageBitmap, lifeTime, emissionType
         )
         when (emissionType) {
             is EmissionType.ExplodeEmission -> {
