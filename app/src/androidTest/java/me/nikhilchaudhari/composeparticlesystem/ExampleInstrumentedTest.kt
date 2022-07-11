@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system
+package me.nikhilchaudhari.composeparticlesystem
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

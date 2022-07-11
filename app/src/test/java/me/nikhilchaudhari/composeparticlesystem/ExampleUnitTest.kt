@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system
+package me.nikhilchaudhari.composeparticlesystem
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

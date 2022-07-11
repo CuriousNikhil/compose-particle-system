@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system
+package me.nikhilchaudhari.composeparticlesystem
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
-import me.nikhilchaudhari.compose_particle_system.ui.theme.ComposeparticlesystemTheme
+import me.nikhilchaudhari.compose_particle_system.R
+import me.nikhilchaudhari.composeparticlesystem.ui.theme.ComposeparticlesystemTheme
 import me.nikhilchaudhari.quarks.CreateParticles
 import me.nikhilchaudhari.quarks.core.PI
 import me.nikhilchaudhari.quarks.particle.Acceleration

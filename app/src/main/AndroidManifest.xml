@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.nikhilchaudhari.compose_particle_system">
+    package="me.nikhilchaudhari.composeparticlesystem">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Composeparticlesystem">
         <activity
-            android:name=".MainActivity"
+            android:name="me.nikhilchaudhari.composeparticlesystem.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Composeparticlesystem.NoActionBar">
