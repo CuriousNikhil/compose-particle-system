@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system
+package me.nikhilchaudhari.composeparticlesystem
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import me.nikhilchaudhari.compose_particle_system.ui.theme.ComposeparticlesystemTheme
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
+import me.nikhilchaudhari.compose_particle_system.R
+import me.nikhilchaudhari.composeparticlesystem.ui.theme.ComposeparticlesystemTheme
 import me.nikhilchaudhari.quarks.CreateParticles
 import me.nikhilchaudhari.quarks.core.PI
 import me.nikhilchaudhari.quarks.particle.Acceleration
@@ -29,13 +32,14 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Black)
+                        .background(Color.White)
                 ) {
-                    Fountain()
+//                    Fountain()
 //                    Meteor()
 //                    Confetti()
 //                    SnowFall()
 //                    Explosion()
+                    ImageFountain()
                 }
             }
         }
@@ -54,7 +58,26 @@ class MainActivity : ComponentActivity() {
             particleColor = ParticleColor.RandomColors(listOf(Color.Blue, Color.Cyan)),
             lifeTime = LifeTime(255f, 1f),
             emissionType = EmissionType.FlowEmission(maxParticlesCount = 500),
-            durationMillis = 10 * 1000
+            durationMillis = 10 * 1000,
+            particleImageBitmap = null
+        )
+    }
+
+    @Composable
+    fun ImageFountain() {
+        CreateParticles(
+            modifier = Modifier
+                .fillMaxSize(),
+            x = 500f, y = 2000f,
+            velocity = Velocity(xDirection = 1f, yDirection = -15f, angle = PI, randomize = true),
+            force = Force.Gravity(0.2f),
+            acceleration = Acceleration(0f, -4f),
+            particleSize = ParticleSize.RandomSizes(10..20),
+            particleColor = ParticleColor.RandomColors(listOf(Color.Blue, Color.Cyan)),
+            lifeTime = LifeTime(255f, 1f),
+            emissionType = EmissionType.FlowEmission(maxParticlesCount = 500),
+            durationMillis = 10 * 1000,
+            particleImageBitmap = ImageBitmap.imageResource(id = R.drawable.tiny_sleepycat)
         )
     }
 
@@ -71,10 +94,10 @@ class MainActivity : ComponentActivity() {
             particleColor = ParticleColor.RandomColors(listOf(Color.Yellow, Color.Blue, Color.Red, Color.White, Color.Magenta, Color.Green)),
             lifeTime = LifeTime(255f, 2f),
             emissionType = EmissionType.FlowEmission(maxParticlesCount = EmissionType.FlowEmission.INDEFINITE, emissionRate = 0.8f),
-            durationMillis = 10 * 1000
+            durationMillis = 10 * 1000,
+            particleImageBitmap = null
         )
     }
-
 
     @Composable
     fun Meteor() {
@@ -89,7 +112,8 @@ class MainActivity : ComponentActivity() {
             particleColor = ParticleColor.SingleColor(Color.White),
             lifeTime = LifeTime(255f, 6f),
             emissionType = EmissionType.FlowEmission(maxParticlesCount = EmissionType.FlowEmission.INDEFINITE, emissionRate = 1f),
-            durationMillis = 10 * 1000
+            durationMillis = 10 * 1000,
+            particleImageBitmap = null
         )
     }
 
@@ -106,7 +130,8 @@ class MainActivity : ComponentActivity() {
             particleColor = ParticleColor.RandomColors(listOf(Color.Yellow, Color.Blue, Color.Red, Color.White, Color.Magenta, Color.Green)),
             lifeTime = LifeTime(255f, 0.5f),
             emissionType = EmissionType.ExplodeEmission(numberOfParticles = 300),
-            durationMillis = 10 * 1000
+            durationMillis = 10 * 1000,
+            particleImageBitmap = null
         )
     }
 
@@ -115,15 +140,16 @@ class MainActivity : ComponentActivity() {
         CreateParticles(
             modifier = Modifier
                 .fillMaxSize(),
-            x = 500f, y = -50f,
+            x = 500f, y = -500f,
             velocity = Velocity(xDirection = 1f, yDirection = 1f, randomize = true),
             force = Force.Gravity(0.01f),
             acceleration = Acceleration(),
             particleSize = ParticleSize.RandomSizes(10..30),
             particleColor = ParticleColor.SingleColor(Color.White),
             lifeTime = LifeTime(255f, 0.01f),
-            emissionType = EmissionType.FlowEmission(maxParticlesCount = 300, emissionRate = 0.5f),
-            durationMillis = 10 * 1000
+            emissionType = EmissionType.FlowEmission(maxParticlesCount = 10, emissionRate = 0.5f),
+            durationMillis = 10 * 1000,
+            particleImageBitmap = null
         )
     }
 }

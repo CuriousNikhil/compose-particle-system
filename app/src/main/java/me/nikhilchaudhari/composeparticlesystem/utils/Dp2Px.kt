@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system.utils
+package me.nikhilchaudhari.composeparticlesystem.utils
 
 import android.content.res.Resources
 

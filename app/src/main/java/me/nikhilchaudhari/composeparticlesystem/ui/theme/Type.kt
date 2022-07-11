@@ -1,4 +1,4 @@
-package me.nikhilchaudhari.compose_particle_system.ui.theme
+package me.nikhilchaudhari.composeparticlesystem.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,7 +1,6 @@
 package me.nikhilchaudhari.quarks.core
 
-open class Vector2D(var x: Float = 0f, var y: Float = 0f) {
-}
+open class Vector2D(var x: Float = 0f, var y: Float = 0f)
 
 fun Vector2D.add(other: Vector2D): Vector2D {
     this.x += other.x
