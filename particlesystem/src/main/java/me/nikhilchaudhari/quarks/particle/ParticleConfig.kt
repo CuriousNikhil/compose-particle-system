@@ -8,7 +8,6 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
-
 data class Velocity(val xDirection: Float = 0f, val yDirection: Float = 0f, val angle: Double = TWO_PI, val randomize: Boolean = true)
 
 internal fun Velocity.createVelocityVector(): Vector2D {
@@ -75,7 +74,6 @@ internal fun ParticleColor.getExactColor(): Color {
     }
 }
 
-
 data class LifeTime(val maxLife: Float = 255f, val agingFactor: Float = 15f)
 
 sealed class EmissionType {
@@ -88,22 +86,20 @@ sealed class EmissionType {
         val emissionRate: Float = 0.5f
     ) : EmissionType() {
         companion object {
-            @JvmField
-            val INDEFINITE = -2
+            const val INDEFINITE = -2
         }
     }
 }
 
 internal data class ParticleConfigData(
-   val x: Float = 0f,
-   val y: Float = 0f,
-   val velocity: Velocity,
-   val force: Force,
-   val acceleration: Acceleration,
-   val particleSize: ParticleSize,
-   val particleColor: ParticleColor,
-   val particleImageBitmap: ImageBitmap?,
-   val lifeTime: LifeTime,
-   val emissionType: EmissionType,
+    val x: Float = 0f,
+    val y: Float = 0f,
+    val velocity: Velocity,
+    val force: Force,
+    val acceleration: Acceleration,
+    val particleSize: ParticleSize,
+    val particleColor: ParticleColor,
+    val particleImageBitmap: ImageBitmap?,
+    val lifeTime: LifeTime,
+    val emissionType: EmissionType,
 )
-

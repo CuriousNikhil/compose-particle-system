@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
 //                    Confetti()
 //                    SnowFall()
 //                    Explosion()
-                      ImageFountain()
+                    ImageFountain()
                 }
             }
         }
@@ -97,7 +97,6 @@ class MainActivity : ComponentActivity() {
             particleImageBitmap = null
         )
     }
-
 
     @Composable
     fun Meteor() {

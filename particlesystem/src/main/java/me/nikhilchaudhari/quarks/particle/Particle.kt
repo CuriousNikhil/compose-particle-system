@@ -11,7 +11,8 @@ import me.nikhilchaudhari.quarks.core.roundTo
 import me.nikhilchaudhari.quarks.core.scalarMultiply
 
 internal class Particle constructor(
-    var initialX: Float = 0f, var initialY: Float = 0f,
+    var initialX: Float = 0f,
+    var initialY: Float = 0f,
     val color: Color = Color.Yellow,
     val image: ImageBitmap?,
     var size: Float = 25f,
@@ -43,18 +44,18 @@ internal class Particle constructor(
         // add velocity vector to positions
         this.add(velocity, scalar = dt)
 
-        //set acceleration back to 0
+        // set acceleration back to 0
         this.acceleration.scalarMultiply(0f)
     }
 
     fun show(drawScope: DrawScope) {
-        if(image != null){
+        if (image != null) {
             drawScope.drawImage(
                 image = image,
                 alpha = alpha,
                 topLeft = Offset(x, y)
             )
-        }else{
+        } else {
             drawScope.drawArc(
                 color = color,
                 startAngle = 0f,
