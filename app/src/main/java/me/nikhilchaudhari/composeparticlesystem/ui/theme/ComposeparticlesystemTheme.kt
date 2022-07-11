@@ -32,7 +32,7 @@ fun ComposeparticlesystemTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content:
         @Composable()
-            () -> Unit
+        () -> Unit
 ) {
     val colors = if (darkTheme) {
         DarkColorPalette
