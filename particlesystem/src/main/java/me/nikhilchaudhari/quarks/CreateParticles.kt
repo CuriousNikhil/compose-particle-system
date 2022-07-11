@@ -37,7 +37,6 @@ fun CreateParticles(
     durationMillis: Int = 10000,
     particleImageBitmap: ImageBitmap?
 ) {
-
     val dt = remember { mutableStateOf(0f) }
 
     var startTime by remember { mutableStateOf(0L) }

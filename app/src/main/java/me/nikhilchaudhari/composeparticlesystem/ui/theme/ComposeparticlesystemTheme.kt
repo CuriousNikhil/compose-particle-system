@@ -28,7 +28,8 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun ComposeparticlesystemTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun ComposeparticlesystemTheme(darkTheme: Boolean = isSystemInDarkTheme(),
+                               content: @Composable() () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

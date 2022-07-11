@@ -101,5 +101,5 @@ internal data class ParticleConfigData(
     val particleColor: ParticleColor,
     val particleImageBitmap: ImageBitmap?,
     val lifeTime: LifeTime,
-    val emissionType: EmissionType,
+    val emissionType: EmissionType
 )
